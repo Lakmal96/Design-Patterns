@@ -1,8 +1,12 @@
 package com.company.observer;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         Observer observer1 = new Type1Observer();
         Observer observer2 = new Type1Observer();
@@ -13,21 +17,8 @@ public class Main {
         subject.subscribe(observer2);
         subject.subscribe(observer3);
 
-        subject.notifyObservers("Curfew will be imposed today!");
+        subject.sendNotification();
 
-        Thread.sleep(10000);
-        System.out.println("=====================================================");
-
-        subject.notifyObservers("Reversed: Curfew will not be imposed today!");
-
-        Thread.sleep(5000);
-
-        subject.unsubscribe(observer2);
-
-        Thread.sleep(5000);
-        System.out.println("======================================================");
-
-        subject.notifyObservers("Fuel prices gone up!");
 
     }
 
